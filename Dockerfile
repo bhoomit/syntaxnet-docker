@@ -35,14 +35,16 @@ RUN  wget https://gist.githubusercontent.com/johndpope/fc1c2327a4ae255d9c44dda9b
     && ./parseyapi.sh
 
 
+
 EXPOSE 9000
 RUN find / -name "parsey_api" -size +512k  |xargs cp -t  /work/serving
 RUN cd /work/serving
 WORKDIR /work/serving
 CMD ["./parsey_api", "--port=9000", "../api/parsey_model", "&"]
 
-RUN cd -
-RUN cd parsey_api
+RUN mkdir /parsey_api
+RUN cd /parsey_api
+RUN git clone https://github.com/bhoomit/parsey_node_api.git .
 RUN npm i
 WORKDIR .
 CMD ["node", "index.js", "&"]
