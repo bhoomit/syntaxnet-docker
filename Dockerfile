@@ -42,9 +42,9 @@ RUN cd /work/serving
 WORKDIR /work/serving
 CMD ["./parsey_api", "--port=9000", "../api/parsey_model", "&"]
 
-RUN mkdir /parsey_api
-RUN cd /parsey_api
-RUN git clone https://github.com/bhoomit/parsey_node_api.git .
-RUN npm i
-WORKDIR .
-CMD ["node", "index.js", "&"]
+#RUN mkdir /parsey_api
+#RUN cd /parsey_api
+#RUN git clone https://github.com/bhoomit/parsey_node_api.git .
+#RUN npm i
+#WORKDIR .
+#CMD ["node", "index.js", "&"]
