@@ -41,11 +41,13 @@ EXPOSE 9000
 RUN find / -name "parsey_api" -size +512k  |xargs cp -t  /work/serving
 RUN cd /work/serving
 WORKDIR /work/serving
-CMD ["./parsey_api", "--port=9000", "../api/parsey_model", "&"]
+CMD ./parsey_api --port=9000 ../api/parsey_model
 
-#RUN mkdir /parsey_api
-#RUN cd /parsey_api
-#RUN git clone https://github.com/bhoomit/parsey_node_api.git .
-#RUN npm i
-#WORKDIR .
+#RUN pwd
+#EXPOSE 9001
+#FROM grpc/node:1.0
+#RUN cd /
+#RUN git clone https://github.com/bhoomit/parsey_node_api.git
+#RUN cd parsey_node_api && pwd && npm i
+#WORKDIR /parsey_node_api
 #CMD ["node", "index.js", "&"]
